@@ -143,11 +143,12 @@
             <td>{{ $ncc->Email }}</td>
             <td>{{ $ncc->MaSoThue }} </td>
             <td>
-              <button 
-                data-toggle="modal" 
-                onclick="suancc({{$ncc->MaNhaCungCap}},{{$ncc->TenNhaCungCap}},{{$ncc->DiaChi}},{{$ncc->SDT}},{{$ncc->Email}},{{$ncc->MaSoThue}})" 
-                value="{{$ncc->MaNhaCungCap}}" data-target="#suancc" class="btn btn-primary" type="button" >Sửa</button>
-                    <button data-toggle="modal" onclick="xoancc(' . "'" .{{$ncc->MaNhaCungCap}} ."'" . ')" data-target="#xoancc" class="btn btn-danger" type="button" >Xoá</button>
+              <button data-toggle="modal" onclick="suancc( '{{$ncc->MaNhaCungCap}}' ,' {{$ncc->TenNhaCungCap}} ',' {{ $ncc->DiaChi }} ', {{ $ncc->SDT }},' {{$ncc->Email}} ',' {{$ncc->MaSoThue}} ')" value="{{$ncc->MaNhaCungCap}}" data-target="#suancc" class="btn btn-primary" type="button" >
+                Sửa
+              </button>
+              <button data-toggle="modal" onclick="xoancc({{$ncc->MaNhaCungCap}})" data-target="#xoancc" class="btn btn-danger" type="button" >
+                Xoá
+              </button>
             </td>
           </tr>
           @endforeach
@@ -155,5 +156,19 @@
     </table>
   </div>
 </div>
+<script>
+  function suancc(mancc,tenncc,diachi,sdt,email,mst){
+    
+    $('#suamancc').val(mancc);
+    $('#suatenncc').val(tenncc);
+    $('#suadcncc').val(diachi);
+    $('#suasdtncc').val(sdt);
+    $('#suaemailncc').val(email);
+    $('#suamstncc').val(mst);
+  }
+  function xoancc(mancc){
+    $('#btncoxoancc').val(mancc);
+  }
+</script>
 
 @endsection

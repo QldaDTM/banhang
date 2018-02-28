@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 Route::get('my-home', 'HomeController@myHome');
 Route::get('my-users', 'HomeController@myUsers');
-Route::get('ql-nhacungcap', 'HomeController@qlNhaCungCap');
+Route::get('ql-nhacungcap', 'qlNhaCungCapController@qlNhaCungCap');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

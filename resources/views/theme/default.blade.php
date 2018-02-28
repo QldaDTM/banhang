@@ -106,7 +106,7 @@
 
 
 
-    <!-- Morris Charts JavaScript -->
+    <!-- Morris Charts JavaScript 
 
     <script src="{!! asset('theme/vendor/raphael/raphael.min.js') !!}"></script>
 
@@ -114,12 +114,11 @@
 
     <script src="{!! asset('theme/data/morris-data.js') !!}"></script>
 
-
+    -->
 
     <!-- Custom Theme JavaScript -->
 
     <script src="{!! asset('theme/dist/js/sb-admin-2.js') !!}"></script>
-
 
 
 </body>
