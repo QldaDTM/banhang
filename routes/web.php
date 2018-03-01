@@ -29,7 +29,8 @@ Route::post('ql-sanpham-xoa', 'qlSanPhamController@delete');
 
 Route::post('search-sanpham', 'searchController@searchSanPham');
 
-Route::get('nhap-kho', 'nhapKhoController@NhapKho');
+Route::any('nhap-kho', 'nhapKhoController@NhapKho');
+Route::any('search-kho', 'nhapKhoController@searchKho');
 
 Auth::routes();
 

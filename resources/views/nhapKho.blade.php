@@ -8,7 +8,7 @@
 <div class="row clearfix">
 <div class="col-md-12 column">
 <div id='in' style='display:none'></div>			
-	<form method="post" onsubmit="return onsubmitnhapkho() ">
+	<form method="post" onsubmit="return onsubmitnhapkho()" action="{{ url('/nhap-kho')}}">
   {{ csrf_field() }}
 		<table class="table table-striped table-success table-hover table-bordered text-center" id="tab_logic">
 			<thead class="thead-inverse">
@@ -61,69 +61,64 @@
 					<td>
 						<button class='delete_row btn btn-danger' onclick='xoacot(0)'>Xoá cột</button>
 					</td>
-					
 				</tr>
 				<tr id='addr1'></tr>
 			</tbody>
 			<tr>
 				<td colspan='3' ><input type="hidden" id='MaHoaDonXuat' name='MaHoaDonXuat' value=''/></td>
 				<td colspan='3' ><button type='submit' id='nhapkhosubmit' value='nhapkhosubmit' name='nhapkhosubmit'class='btn btn-success'>Thực hiện</button></td>
-				
 			</tr>
 		</table>
 	</form>
-	
 </div>
 </div>
 <script>
-  var mywindow = window.open('', 'PRINT', 'height=1200,width=600');
   $(document).ready(function(){
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
     let i =1;
     let sp;
     let mang= [];
     $.ajax({
-    type: "POST",
-    url: 'http://localhost/quanlykho/Controller/search.php',
+    type: "get",
+    url: "{{ url('search-kho') }}",
     data: {getidnk:'getidnk'},
     success: function(success){
       $('#MaHoaDonXuat').val(success);
-    },
-    dataType:'text'
+    }
     });
     $( "#mspnk0" ).ready( function(){
       let maspdau= $( "#mspnk0" ).val();
-     
       $.ajax({
-        type: "POST",
-        url: 'http://localhost/quanlykho/Controller/search.php',
+        type: "get",
+        url: "{{ url('search-kho') }}",
         data: {selectkhonk:maspdau},
         success: function(success){
           setnoidungkho(0,success);
-        },
-        dataType:'json'
+        }
       });
-    } );
-    //
-    $("#add_row").click(function(){    
-      $.ajax({
-      type: "POST",
-      url: 'http://localhost/quanlykho/Controller/search.php',
-      data: {gspnk:'gspnk'},
-      success: function(success){    
-      $('.mspnk').each(function(){
-       
-        let m = $('#'+this.id).val();
-        success = $(success).filter((e,item) => item.MaSanPham !== m); 
-      });
-      if(success.length>0){
-        ghi(i,success);
-        i++; 
+    });
 
-      }
-      },
-      dataType:'json'
-    }); 
-  });
+    $("#add_row").click(function(){
+      $.ajax({
+        type: "get",
+        url: "{{ url('search-kho') }}",
+        data: {gspnk:'gspnk'},
+        success: function(success){    
+          $('.mspnk').each(function(){
+            let m = $('#'+this.id).val();
+            success = $(success).filter((e,item) => item.MaSanPham !== m); 
+          });
+          if(success.length>0){
+            ghi(i,success);
+            i++; 
+          }
+        }
+      }); 
+    });
 });
 
 function onsubmitnhapkho() {
@@ -143,8 +138,8 @@ function onsubmitnhapkho() {
   return inphieu(bool);
 };
 
-function setnoidungkho(id,mang){
-  let option=''
+function setnoidungkho(id, mang){
+  let option='';
   $(mang).map((key,m)=>{
     option += '<option data-slton='+(m.SoLuongChuaToiDa - m.SoLuongDangChua) +'  value="'+ m.MaKhu+'">'+m.TenKhu+' | SL Còn: '+ (m.SoLuongChuaToiDa - m.SoLuongDangChua) +'</option>'
   });
@@ -171,10 +166,10 @@ function onchangevtk(id){
 
 function ghi(i,mang){
   let option2 = '';
-  let option= '';
+  let option = '';
   $(mang).map((key,m)=>
     {
-      if (key===0){
+      if (key === 0){
         option += '<option value="'+m.MaSanPham+'">'+m.TenSanPham+'</option>';
       }
       else{
@@ -215,46 +210,39 @@ function ghi(i,mang){
   });
 
   let maspdau= $( "#mspnk"+i ).val();
-    $.ajax({
-      type: "POST",
-      url: 'http://localhost/quanlykho/Controller/search.php',
-      data: {selectkhonk:maspdau},
-      success: function(success){
-        setnoidungkho(i,success);
-      },
-      dataType:'json'
-    });
-
+  $.ajax({
+    type: "get",
+    url: "{{ url('search-kho') }}",
+    data: {selectkhonk:maspdau},
+    success: function(success){
+      setnoidungkho(i,success);
+    }
+  });
 }
 function changemsnk(id) {
   let maspdau= $( "#mspnk"+id ).val();
-  
   $.ajax({
-    type: "POST",
-    url: 'http://localhost/quanlykho/Controller/search.php',
+    type: "get",
+    url: "{{ url('search-kho') }}",
     data: {selectkhonk:maspdau},
     success: function(success){
       setnoidungkho(id,success);
-    },
-    dataType:'json'
+    }
   });
-
   $.ajax({
-    type: "POST",
-    url: 'http://localhost/quanlykho/Controller/search.php',
+    type: "get",
+    url: "{{ url('search-kho') }}",
     data: {gspnk:'gspnk'},
-    success: function(success){
-      
+    success: function(success){   
       $('.mspnk').each(function(){
         let m = $('#'+this.id).val();
-        success = $(success).filter((e,item) => item.MaSanPham !== m);  
+        success = $(success).filter((e,item) => item.MaSanPham !== m); 
       });
       if(success.length>0){
         sua(success);
       }
-    },
-    dataType:'json'
-  });
+    }
+  }); 
 };
 
 function sua(mang){
@@ -268,31 +256,29 @@ function sua(mang){
     let option1 = option;
     option1 = '<option value="'+ $('#'+this.id).val()+'">'+ $('#'+this.id+' option:selected').text()+'</option>'+option1;
     $('#'+this.id).html(option1);       
-  });      
-
+  });    
 }
 
 function xoacot(r){
 	$("#addr"+r).html('');
   $.ajax({
-    type: "POST",
-    url: 'http://localhost/quanlykho/Controller/search.php',
+    type: "get",
+    url: "{{ url('search-kho') }}",
     data: {gspnk:'gspnk'},
-    success: function(success){
+    success: function(success){    
       $('.mspnk').each(function(){
         let m = $('#'+this.id).val();
-        success = $(success).filter((e,item) => item.MaSanPham !== m);  
+        success = $(success).filter((e,item) => item.MaSanPham !== m); 
       });
       if(success.length>0){
         sua(success);
       }
-    },
-    dataType:'json'
-  });
+    }
+  }); 
 };
 
 function inphieu(bool)
-{  
+{
   let r= $('#TenNhanVien').html().substring(4);
   let string="";
   $('.checknk').each(function(){
@@ -310,7 +296,7 @@ function inphieu(bool)
 '   </td>'+
     '</tr>'
   });
-
+  var mywindow = window.open('', 'PRINT', 'height=1200,width=600');
   iddein = $('#MaHoaDonXuat').val();
   mywindow.document.write('<html><head><title></title>');
   mywindow.document.write('</head><body >');
@@ -340,4 +326,5 @@ function hienthiphieuin(){
 }
 
 </script>
+
 @endsection
