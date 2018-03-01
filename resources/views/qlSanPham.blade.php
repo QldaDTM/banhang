@@ -169,21 +169,25 @@
 </div>
 <script>
 $( document ).ready(function() {
+  $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+  });
   $("#searchcsp").keyup(function() {
     var r= $("#searchcsp").val();
     $.ajax({
-      type: "POST",
-      url: 'http://localhost/quanlykho/Controller/search.php',
-      data: {searchcsp:r},
+      type: "post",
+      url: "{{ url('search-sanpham') }}",
+      data: {searchcsp: r},
       success: function(success){
         $('#csptbody').html(success);
       },
-      dataType:'text'
+      dataType: "text"
     });
   });
 });
 function suacsp(macsp,tencsp,ncc,slt,dg,dv){
-  alert(ncc);
   $('#suamacsp').val(macsp);
   $('#suatencsp').val(tencsp);
   $('#suancccsp').val(ncc);
