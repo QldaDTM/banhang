@@ -27,6 +27,8 @@ Route::post('ql-sanpham-them', 'qlSanPhamController@insert');
 Route::post('ql-sanpham-sua', 'qlSanPhamController@update');
 Route::post('ql-sanpham-xoa', 'qlSanPhamController@delete');
 
+Route::post('search-sanpham', 'searchController@searchSanPham');
+
 Route::get('nhap-kho', 'nhapKhoController@NhapKho');
 
 Auth::routes();
