@@ -21,6 +21,12 @@ Route::get('ql-nhacungcap', 'qlNhaCungCapController@qlNhaCungCap');
 Route::post('ql-nhacungcap-them', 'qlNhaCungCapController@insert');
 Route::post('ql-nhacungcap-sua', 'qlNhaCungCapController@update');
 Route::post('ql-nhacungcap-xoa', 'qlNhaCungCapController@delete');
+
+Route::get('ql-vatlieu', 'qlVatLieuController@qlNhaCungCap');
+Route::post('ql-vatlieu-them', 'qlVatLieuController@insert');
+Route::post('ql-vatlieu-sua', 'qlVatLieuController@update');
+Route::post('ql-vatlieu-xoa', 'qlVatLieuController@delete');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

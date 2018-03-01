@@ -159,19 +159,4 @@
     </table>
   </div>
 </div>
-<script>
-  function suancc(mancc,tenncc,diachi,sdt,email,mst){
-    
-    $('#suamancc').val(mancc);
-    $('#suatenncc').val(tenncc);
-    $('#suadcncc').val(diachi);
-    $('#suasdtncc').val(sdt);
-    $('#suaemailncc').val(email);
-    $('#suamstncc').val(mst);
-  }
-  function xoancc(mancc){
-    $('#btncoxoancc').val(mancc);
-  }
-</script>
-
 @endsection

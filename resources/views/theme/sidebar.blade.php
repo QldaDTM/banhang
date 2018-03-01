@@ -44,7 +44,7 @@
                     </li>
                     <li>
 
-                        <a href="morris.html">Vật liệu</a>
+                        <a href="{{ url('ql-vatlieu') }}">Vật liệu</a>
 
                     </li>
                     <li>
