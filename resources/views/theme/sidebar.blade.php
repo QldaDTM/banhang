@@ -49,12 +49,12 @@
                     </li>
                     <li>
 
-                        <a href="morris.html">Kho vật liệu chính</a>
+                        <a href="{{ url('khovatlieuchinh') }}">Kho vật liệu chính</a>
 
                     </li>
                     <li>
 
-                        <a href="morris.html">Kho vật liệu hỏng</a>
+                        <a href="{{ url('khovatlieuhong') }}">Kho vật liệu hỏng</a>
 
                     </li>
 
@@ -72,7 +72,7 @@
 
             <li>
 
-                <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Xuất kho</a>
+                <a href="{{ url('xuat-kho') }}"><i class="fa fa-edit fa-fw"></i> Xuất kho</a>
 
             </li>
 
@@ -85,12 +85,12 @@
 
                     <li>
 
-                        <a href="panels-wells.html">Thống kê Xuất kho</a>
+                        <a href="{{ url('thongkexuatkho') }}">Thống kê Xuất kho</a>
 
                     </li>
                     <li>
 
-                        <a href="panels-wells.html">Thống kê nhập kho</a>
+                        <a href="{{ url('thongkenhapkho') }}">Thống kê nhập kho</a>
 
                     </li>
 
@@ -100,17 +100,17 @@
             </li>
             <li>
 
-                <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Quản lý hàng hư</a>
+                <a href="{{ url('ql-hanghu') }}"><i class="fa fa-edit fa-fw"></i>Quản lý hàng hư</a>
 
             </li>
             <li>
 
-                <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Quản lý khách hàng</a>
+                <a href="{{ url('ql-khachhang') }}"><i class="fa fa-edit fa-fw"></i>Quản lý khách hàng</a>
 
             </li>
             <li>
 
-                <a href="#"><i class="fa fa-files-o fa-fw"></i> Kiểm tra hàng tồn kho</a>
+                <a href="{{ url('kiemtratonkho') }}"><i class="fa fa-files-o fa-fw"></i> Kiểm tra hàng tồn kho</a>
 <!-- 
                 <ul class="nav nav-second-level">
                 
@@ -129,11 +129,6 @@
                 </ul>
 
                 /.nav-second-level -->
-
-            </li>
-            <li>
-
-                <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Quản lý hàng hư</a>
 
             </li>
             
