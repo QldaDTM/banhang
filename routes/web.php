@@ -16,7 +16,11 @@ Route::get('/', function () {
 });
 Route::get('my-home', 'HomeController@myHome');
 Route::get('my-users', 'HomeController@myUsers');
+
 Route::get('ql-nhacungcap', 'qlNhaCungCapController@qlNhaCungCap');
+Route::post('ql-nhacungcap-them', 'qlNhaCungCapController@insert');
+Route::post('ql-nhacungcap-sua', 'qlNhaCungCapController@update');
+Route::post('ql-nhacungcap-xoa', 'qlNhaCungCapController@delete');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

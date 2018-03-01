@@ -10,7 +10,8 @@
   <div class="modal fade" id="themncc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-      <form method="post">
+      <form method="post" action="{{url('/ql-nhacungcap-them') }}">
+          {{ csrf_field() }}
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Thêm Nhà Cung Cấp</h5>
           </div>
@@ -42,7 +43,7 @@
           </div>
           <div class="modal-footer">
             <input type="hidden" name='qlkho' value='ncc' />
-            <button type="submit" class="btn btn-success" name='themncc'>Thêm tài khoản</button>
+            <button type="submit" class="btn btn-success">Thêm tài khoản</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Thoát</button> 
           </div>
         </form>
@@ -53,7 +54,8 @@
   <div class="modal fade" id="suancc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <form method="post">
+        <form method="post" action="{{url('/ql-nhacungcap-sua') }}">
+          {{ csrf_field() }}
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Sửa Nhà Cung Cấp</h5>
           </div>
@@ -104,8 +106,9 @@
           </button>
         </div>
         <div class="modal-footer">
-          <form method="post">
-            <input type='hidden' name='qlkho' value='ncc'  />
+          <form method="post" action="{{url('/ql-nhacungcap-xoa') }}">
+            {{ csrf_field() }}
+            <input type='hidden' name='qlkho' value='ncc' />
             <button type="submit" id="btncoxoancc" class="btn btn-success" name="xoancc" value="">Có</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Không</button>
           </form>
@@ -146,7 +149,7 @@
               <button data-toggle="modal" onclick="suancc( '{{$ncc->MaNhaCungCap}}' ,' {{$ncc->TenNhaCungCap}} ',' {{ $ncc->DiaChi }} ', {{ $ncc->SDT }},' {{$ncc->Email}} ',' {{$ncc->MaSoThue}} ')" value="{{$ncc->MaNhaCungCap}}" data-target="#suancc" class="btn btn-primary" type="button" >
                 Sửa
               </button>
-              <button data-toggle="modal" onclick="xoancc({{$ncc->MaNhaCungCap}})" data-target="#xoancc" class="btn btn-danger" type="button" >
+              <button data-toggle="modal" onclick="xoancc('{{$ncc->MaNhaCungCap}}')" data-target="#xoancc" class="btn btn-danger" type="button" >
                 Xoá
               </button>
             </td>

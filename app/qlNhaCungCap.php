@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class qlNhaCungCap extends Model
 {
-    protected $table= 'nhacungcap';
+  protected $table= 'nhacungcap';
+  public $timestamps = false;
+
 }
