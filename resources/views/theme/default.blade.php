@@ -46,8 +46,10 @@
 
     <link href="{!! asset('theme/vendor/font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet" type="text/css">
 
-
-
+    <script src="{{asset('theme/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{!! asset('theme/vendor/bootstrap/js/bootstrap.min.js') !!}"></script>
+    <script src="{!! asset('theme/vendor/metisMenu/metisMenu.min.js') !!}"></script>
+    <script src="{!! asset('theme/dist/js/sb-admin-2.js') !!}"></script>
 </head>
 
 <body>
@@ -86,21 +88,7 @@
 
     <!-- jQuery -->
 
-    <script src="{!! asset('theme/vendor/jquery/jquery.min.js') !!}"></script>
-
-
-
-    <!-- Bootstrap Core JavaScript -->
-
-    <script src="{!! asset('theme/vendor/bootstrap/js/bootstrap.min.js') !!}"></script>
-
-
-
-    <!-- Metis Menu Plugin JavaScript -->
-
-    <script src="{!! asset('theme/vendor/metisMenu/metisMenu.min.js') !!}"></script>
-
-
+    
 
     <!-- Morris Charts JavaScript 
 
@@ -114,8 +102,7 @@
 
     <!-- Custom Theme JavaScript -->
 
-    <script src="{!! asset('theme/dist/js/sb-admin-2.js') !!}"></script>
-
+    
 
 </body>
 

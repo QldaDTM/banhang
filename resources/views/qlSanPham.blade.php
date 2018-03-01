@@ -1,7 +1,7 @@
 @extends('theme.default')
 @section('content')
 
-<script src="{{asset('theme/vendor/jquery/jquery.min.js')}}"></script>
+
 <div class='row'>
   <div class='titilecon col-md-12 text-center text-danger'>
     <h2>Thông tin kho vật liệu</h2>
