@@ -11,11 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('my-home', 'HomeController@myHome');
-Route::get('my-users', 'HomeController@myUsers');
+Route::get('/', 'HomeController@index');
+Route::get('home', 'HomeController@index');
 
 Route::get('ql-nhacungcap', 'qlNhaCungCapController@qlNhaCungCap');
 Route::post('ql-nhacungcap-them', 'qlNhaCungCapController@insert');
@@ -32,5 +29,3 @@ Route::post('search-sanpham', 'searchController@searchSanPham');
 Route::get('nhap-kho', 'nhapKhoController@NhapKho');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
