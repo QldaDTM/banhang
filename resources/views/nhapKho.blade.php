@@ -43,10 +43,10 @@
 						<input disabled type='checkbox' name='checknk[]' value='0' id='checknk0'  class="checknk form-control"/>
 					</td>
 					<td >
-						<select onchange='changemsnk(0)' name="mspnk0" id='mspnk0' class='mspnk form-control' >
-							<?php 
-							//echo $nhapkho->xulymasp();
-							?>
+						<select onchange='changemsnk(0)' name="mspnk0" id='mspnk0' class='mspnk form-control'>
+              @foreach($masp as $kq)
+                <option value="{{ $kq->MaSanPham }}">{{ $kq->TenSanPham }}</option>';
+              @endforeach
 						</select>
 					</td>
 					<td>
