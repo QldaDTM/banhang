@@ -66,7 +66,7 @@
 
             <li>
 
-                <a href="tables.html"><i class="fa fa-table fa-fw"></i> Nhập kho</a>
+                <a href="{{ url('nhap-kho') }}"><i class="fa fa-table fa-fw"></i> Nhập kho</a>
 
             </li>
 

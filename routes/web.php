@@ -27,6 +27,8 @@ Route::post('ql-vatlieu-them', 'qlVatLieuController@insert');
 Route::post('ql-vatlieu-sua', 'qlVatLieuController@update');
 Route::post('ql-vatlieu-xoa', 'qlVatLieuController@delete');
 
+Route::get('nhap-kho', 'nhapKhoController@NhapKho');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
