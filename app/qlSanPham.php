@@ -8,4 +8,7 @@ class qlSanPham extends Model
 {
   protected $table= 'sanpham';
   public $timestamps = false;
+  public function nhacungcap(){
+		return $this->belongsTo('App\qlNhaCungCap','MaNhaCungCap','MaNhaCungCap');
+	}
 }

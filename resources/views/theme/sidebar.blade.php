@@ -44,7 +44,7 @@
                     </li>
                     <li>
 
-                        <a href="{{ url('ql-vatlieu') }}">Vật liệu</a>
+                        <a href="{{ url('ql-sanpham') }}">Vật liệu</a>
 
                     </li>
                     <li>

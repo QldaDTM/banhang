@@ -13,9 +13,7 @@
     <meta name="description" content="">
 
     <meta name="author" content="">
-
-
-
+    
     <title>SB Admin 2 - Bootstrap Admin Theme</title>
 
 
@@ -53,8 +51,6 @@
 </head>
 
 <body>
-
-
 
     <div id="wrapper">
 
