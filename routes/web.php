@@ -22,10 +22,10 @@ Route::post('ql-nhacungcap-them', 'qlNhaCungCapController@insert');
 Route::post('ql-nhacungcap-sua', 'qlNhaCungCapController@update');
 Route::post('ql-nhacungcap-xoa', 'qlNhaCungCapController@delete');
 
-Route::get('ql-vatlieu', 'qlVatLieuController@qlNhaCungCap');
-Route::post('ql-vatlieu-them', 'qlVatLieuController@insert');
-Route::post('ql-vatlieu-sua', 'qlVatLieuController@update');
-Route::post('ql-vatlieu-xoa', 'qlVatLieuController@delete');
+Route::get('ql-sanpham', 'qlSanPhamController@qlSanPham');
+Route::post('ql-sanpham-them', 'qlSanPhamController@insert');
+Route::post('ql-sanpham-sua', 'qlSanPhamController@update');
+Route::post('ql-sanpham-xoa', 'qlSanPhamController@delete');
 
 Auth::routes();
 
