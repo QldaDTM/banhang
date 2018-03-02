@@ -24,6 +24,11 @@ Route::post('ql-sanpham-them', 'qlSanPhamController@insert');
 Route::post('ql-sanpham-sua', 'qlSanPhamController@update');
 Route::post('ql-sanpham-xoa', 'qlSanPhamController@delete');
 
+Route::get('khovatlieuchinh', 'khoVatLieuChinhController@khoVatLieuChinh');
+Route::post('khovatlieuchinh-them', 'khoVatLieuChinhController@insert');
+Route::post('khovatlieuchinh-sua', 'khoVatLieuChinhController@update');
+Route::post('khovatlieuchinh-xoa', 'khoVatLieuChinhController@delete');
+
 Route::post('search-sanpham', 'searchController@searchSanPham');
 
 Route::any('nhap-kho', 'nhapKhoController@NhapKho');

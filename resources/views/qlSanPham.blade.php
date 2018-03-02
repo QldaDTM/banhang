@@ -13,7 +13,8 @@
   <div class="modal fade" id="themcsp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-      <form method="post">
+      <form method="post" action="{{url('/ql-sanpham-them') }}">
+        {{ csrf_field() }}
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Thêm vật liệu</h5>
           </div>
@@ -60,7 +61,8 @@
   <div class="modal fade" id="suacsp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-      <form method="post">
+      <form method="post" action="{{url('/ql-sanpham-sua') }}">
+        {{ csrf_field() }}
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Sửa Vật liệu</h5>
           </div>
@@ -114,7 +116,8 @@
           </button>
         </div>
         <div class="modal-footer">
-          <form method="post">
+          <form method="post" action="{{url('/ql-sanpham-xoa') }}">
+            {{ csrf_field() }}
             <input type='hidden' name='qlkho' value='csp'  />
             <button type="submit" id="btncoxoacsp" class="btn btn-success" name="xoacsp" value="">Có</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Không</button>
@@ -153,7 +156,7 @@
             <td>{{ $sp->DonGia }}</td>
             <td>{{ $sp->DonVi }} </td>
             <td>
-              <button data-toggle="modal" onclick="suacsp( '{{$sp->MaSanPham}}' ,' {{$sp->TenSanPham}} ','{{ $sp->MaNhaCungCap }}', '{{ $sp->SoLuongTon }}', '{{$sp->DonGia}}',' {{$sp->DonVi}} ')" value="{{$sp->MaSanPham}}" data-target="#suacsp" class="btn btn-primary" type="button" >
+              <button data-toggle="modal" onclick="suacsp( '{{$sp->MaSanPham}}' ,'{{$sp->TenSanPham}}','{{ $sp->MaNhaCungCap }}', '{{ $sp->SoLuongTon }}', '{{$sp->DonGia}}','{{$sp->DonVi}}')" value="{{$sp->MaSanPham}}" data-target="#suacsp" class="btn btn-primary" type="button" >
                 Sửa
               </button>
               <button data-toggle="modal" onclick="xoacsp('{{$sp->MaSanPham}}')" data-target="#xoacsp" class="btn btn-danger" type="button" >
