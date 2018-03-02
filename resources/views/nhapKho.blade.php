@@ -8,7 +8,7 @@
 <div class="row clearfix">
 <div class="col-md-12 column">
 <div id='in' style='display:none'></div>			
-	<form method="post" onsubmit="return onsubmitnhapkho()" action="{{ url('/nhap-kho')}}">
+	<form method="post" onsubmit="return onsubmitnhapkho()" action="{{ url('/nhap-kho-run')}}">
   {{ csrf_field() }}
 		<table class="table table-striped table-success table-hover table-bordered text-center" id="tab_logic">
 			<thead class="thead-inverse">
@@ -279,7 +279,7 @@ function xoacot(r){
 
 function inphieu(bool)
 {
-  let r= $('#TenNhanVien').html().substring(4);
+  //let r= $('#TenNhanVien').html().substring(4);
   let string="";
   $('.checknk').each(function(){
     let mathutu= $('#'+this.id).val();

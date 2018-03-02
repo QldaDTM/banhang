@@ -29,44 +29,42 @@ class nhapKho
     foreach($mang as $id){
       $sql.= " MaKhu = '$id' or";     
     }
-    $sql= substr($sql,0,strlen($sql)-2);
+    $sql= substr($sql,0,strlen($sql)-3);
     $kq= DB::select($sql);
     return $kq;
   }
 
   function TaoPhieuNhapKho($mang){
     $bool= true;
-    $idhd=$this->getIdToInsert();
-    $idtv= "NV01";
-    foreach($mang['checknk'] as $id){
-      $tongsp= $mang['slnk'.$id];
-      $khosp= $mang['vtknk'.$id];
-      $soluongkho = $this->LaySoLuong($khosp);
-      $r=''; 
+    $idhd = $this->getIdToInsert();
+    $idtv= "TV1";
+    
+    foreach($mang->checknk as $id){
+      $tongsp = $mang['slnk'.$id];
+      $khosp = $mang['vtknk'.$id];
+      $soluongkho=$this->LaySoLuong($khosp);
+      $r='';    
       foreach($soluongkho as $slk){
-         $giatri=($tongsp >= $slk->slcon ? $slk->slcon : $tongsp);
-          $sql="update kho set SoLuongDangChua = SoLuongDangChua + ". $giatri ." where MaKhu ='".$slk['MaKhu'] ."'";
-          $r.=  $slk['MaKhu'].':'.$giatri .';';
-          if (DB::update($sql) == 0) {
-            return $bool= false;
-          }
-          
-          if($tongsp >= $slk->slcon){
-            $tongsp -= $slk->slcon;
-          }
-          else $tongsp= 0;
+        $giatri=($tongsp >= $slk->slcon ? $slk->slcon : $tongsp);
+        $sql="update kho set SoLuongDangChua = SoLuongDangChua + ". $giatri ." where MaKhu ='".$slk->MaKhu."'";
+        $r.=  $slk->MaKhu.':'.$giatri .';';
+        if (DB::update($sql) == 0) {
+          return $bool= false;
+        }
+        if($tongsp >= $slk->slcon){
+          $tongsp -= $slk->slcon;
+        }
+        else $tongsp = 0;
       }
     }
-    $sql= "insert into phieunhapkho values('$idhd', now(), '$idtv')";
+    $sql = "insert into phieunhapkho values('$idhd', now(), '$idtv')";
     if ( DB::update($sql) == 0 ) return $bool = false;
-      $sql= "insert into chitietnhapkho values";
-      foreach($mang['checknk'] as $id){
+      $sql = "insert into chitietnhapkho values";
+      foreach($mang->checknk as $id){
         $r = substr($r,0,strlen($r)-1);
         $sql.="( '".$idhd ." ','".$mang['mspnk'.$id] ." ', '".$r."','".$mang['slnk'.$id]."','".$mang['dgnk'.$id]."' ),"; 
       }
-
-      $sql= substr($sql,0,strlen($sql)-1);
-
+      $sql = substr($sql,0,strlen($sql)-1);
       if (DB::update($sql) == 0) {
          $bool= false;
          //$sql = "delete from phieunhapkho where MaPhieuNhapKho ='$idhd'";
