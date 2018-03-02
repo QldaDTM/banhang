@@ -7,6 +7,11 @@ use App\qlSanPham;
 use App\qlNhaCungCap;
 class qlSanPhamController extends Controller
 {
+	public function __construct()
+  {
+    $this->middleware('auth');
+  }
+
   public function qlSanPham() {
     $sanpham = qlSanPham::all();
     $nhacungcap = qlNhaCungCap::all();

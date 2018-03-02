@@ -8,6 +8,10 @@ use App\qlNhaCungCap;
 use App\qlSanPham;
 class searchController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
   public function searchSanPham(Request $request) {
     // $sanpham = DB::select("select * from sanpham,nhacungcap where sanpham.MaNhaCungCap= nhacungcap.MaNhaCungCap and 
     //     (TenSanPham like 'TLHS' or MaSanPham like 'TLHS' or TenNhaCungCap like 'TLHS')");
