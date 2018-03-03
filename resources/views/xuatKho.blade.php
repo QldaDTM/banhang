@@ -176,7 +176,7 @@ $xk = new xuatKho();
           var string ="";
           for(var i=1; i<= stt; i++)
           {
-            string += '<tr>'+   
+            string += '<tr align="center">'+   
             '<td> '+ i +'   </td>'+
             '<td> '+ $('#tensp'+i).val()+'   </td>'+
             '<td> '+ $('#soluong'+i).val()+'   </td>'+
@@ -185,26 +185,26 @@ $xk = new xuatKho();
           }
           var mywindow = window.open('', 'PRINT', 'height=1200,width=600');
           mywindow.document.write('<html><head><title></title>');
+          mywindow.document.write('<style>table {width: 80%;border-collapse: collapse;}table, td, th {padding: 4px;border: 1px solid black;}</style>');
           mywindow.document.write('</head><body >');
-          mywindow.document.write('<h1 align="center">Công Ty Trách Nhiệm Hữu Hạn LTTS</h1>');
+          mywindow.document.write('<h1><center>Công Ty Trách Nhiệm Hữu Hạn LTTS</center></h1>');
           mywindow.document.write('<h1><center>Phiếu Xuất Kho</center></h1>');
           mywindow.document.write('<h3>Số phiếu xuất kho: '+$('#maphieu').val()+'</h3>');
           mywindow.document.write('<h3>Nhân viên xuất kho: '+$('#tenthanhvien').val()+'</h3>');
           mywindow.document.write('<h3>Ngày xuất kho: '+new Date().toLocaleString()+'</h3>');
           mywindow.document.write(
-            '<table style="margin-left:75px;" border="1" width="80%"> '+
-            '<tr>'+ '<th width="10%" class="text-primary">STT</th>' +
-            '<th width="50%" class="text-primary">Tên vật liệu </th><th width="20%"> Số lượng </th><th width="20%">Đơn giá</th>'+
+            '<center><table> '+
+            '<tr>'+ '<th width="10%">STT</th>' +
+            '<th width="50%">Tên vật liệu </th><th width="20%">Số lượng </th><th width="20%">Đơn giá</th>'+
             '</tr>'+  
             string+ '<tr><td colspan="4" align="right">Tổng tiền: '+ $('#tonggia').val() +'</td></tr>' +
             '<table>');
-          mywindow.document.write('<br><br><br><div style="margin-left:75px;"> &nbsp &nbsp &nbsp  &nbsp  &nbsp  &nbsp Nhân viên ký tên  &nbsp &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Người nhận ký tên</div>'); 
-          mywindow.document.write('</body></html>');
+          mywindow.document.write('<br><br><br><div>Nhân viên ký tên  &nbsp &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Người nhận ký tên</div>'); 
+          mywindow.document.write('</body></html></center>');
           mywindow.document.close(); 
           mywindow.focus(); 
           mywindow.print();
           window.location = "xuat-kho";
-        // $.redirect(" url('xuat-kho') ");
         </script>
         <?php
       }

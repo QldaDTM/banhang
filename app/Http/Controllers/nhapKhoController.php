@@ -9,10 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 class nhapKhoController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
+
   public function NhapKho() {
     $qlsp = new qlSanPham();
     $masp = $qlsp->getmasp();

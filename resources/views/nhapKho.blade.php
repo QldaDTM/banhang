@@ -70,6 +70,8 @@
 				<td colspan='3' ><button type='submit' id='nhapkhosubmit' value='nhapkhosubmit' name='nhapkhosubmit'class='btn btn-success'>Thực hiện</button></td>
 			</tr>
 		</table>
+    <input type="hidden" id='TenNhanVien' name='TenNhanVien' value='{{Auth::user()->name}}'/>
+    <input type="hidden" id='MaNhanVien' name='MaNhanVien' value='{{Auth::user()->id}}'/>
 	</form>
 </div>
 </div>
@@ -280,7 +282,7 @@ function xoacot(r){
 
 function inphieu(bool)
 {
-  //let r= $('#TenNhanVien').html().substring(4);
+  let r= $('#TenNhanVien').val();
   let string="";
   $('.checknk').each(function(){
     let mathutu= $('#'+this.id).val();
@@ -300,32 +302,29 @@ function inphieu(bool)
   var mywindow = window.open('', 'PRINT', 'height=1200,width=600');
   iddein = $('#MaHoaDonXuat').val();
   mywindow.document.write('<html><head><title></title>');
+  mywindow.document.write('<style>table {width: 70%;border-collapse: collapse;}table, td, th {text-align: center;padding: 4px;border: 1px solid black;}</style>');
   mywindow.document.write('</head><body >');
-  mywindow.document.write('<h1>Công Ty Trách Nhiệm Hữu Hạn LTTS</h1>');
+  mywindow.document.write('<h1><center>Công Ty Trách Nhiệm Hữu Hạn LTTS</center></h1>');
   mywindow.document.write('<h1><center>Phiếu Nhập Kho</center></h1>');
   mywindow.document.write('<h3>Số phiếu nhập kho: '+iddein+'</h3>');
   mywindow.document.write('<h3>Nhân viên xuất kho: '+r+'</h3>');
   mywindow.document.write('<h3>Ngày xuất kho: '+new Date().toLocaleString()+'</h3>');
   mywindow.document.write(
-    '<table style="margin-left:75px;" border="1" width="450"> '+
+    '<center><table> '+
     '<tr>'+
     '<th width="33%" class="text-primary">Tên Sản phẩm </th><th width="33%"> Số lượng </th><th width="33%">Vị trí kho</th>'+
     '</tr>'+  
     string+
     '<table>');
-  mywindow.document.write('<br><br><br><div style="margin-left:75px;"> &nbsp  &nbsp  &nbsp  &nbsp  &nbsp Nhân viên ký tên  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Người nhận ký tên</div>'); 
-  mywindow.document.write('</body></html>');
+  mywindow.document.write('<br><br><br><div>Nhân viên ký tên  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Người nhận ký tên</div>'); 
+  mywindow.document.write('</center></body></html>');
 
   mywindow.document.close(); 
   mywindow.focus(); 
-  //mywindow.print();
-  //mywindow.close();
+  mywindow.print();
+  mywindow.close();
   return bool;
 }
-function hienthiphieuin(){
-  mywindow.print();
-}
-
 </script>
 
 @endsection
