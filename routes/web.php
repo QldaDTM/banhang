@@ -29,4 +29,7 @@ Route::post('search-sanpham', 'searchController@searchSanPham');
 Route::any('nhap-kho', 'nhapKhoController@NhapKho');
 Route::post('nhap-kho-run', 'nhapKhoController@Nhap');
 Route::any('search-kho', 'nhapKhoController@searchKho');
+
+Route::any('xuat-kho', 'xuatKhoController@XuatKho');
+
 Auth::routes();
