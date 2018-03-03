@@ -119,7 +119,8 @@
 					<tr class='addr' id="addr0"></tr>
 					</tbody>
 					<tr>
-						<td colspan='3'  ><input type="hidden" id='MaHoaDonXuat' name='MaHoaDonXuat' value=''/></td>
+						<td colspan='3'  ><input type="hidden" id='MaHoaDonXuat' name='MaHoaDonXuat' value=''/>
+            <input type="hidden" id='MaNhanVien' name='MaNhanVien' value='{{Auth::user()->id}}'/></td>
 						<td colspan='2' ><button type='submit' id='nhapkhosubmit' value='nhapkhosubmit' name='nhapkhosubmit'class='btn btn-success'>Thực hiện</button></td>
 						
 					</tr>
@@ -161,10 +162,6 @@
   function xoancc(mancc){
     $('#btncoxoancc').val(mancc);
   }
-</script>
-
-<script>
-var mywindow = window.open('', 'PRINT', 'height=1200,width=600');
 var i =0;
 var maxk='';
 $(document).ready(function(){
@@ -177,23 +174,19 @@ $(document).ready(function(){
       url: "{{url('ql-hanghu-tim')}}",
       data: {gspkh:maspdau},
       success: function(success){
-      $('.mspnk').each(function(){
-      
+      $('.mspnk').each(function(){     
         let m = $('#'+this.id).val();
-        success = $(success).filter((e,item) => item.MaSanPham !== m);
-          
+        success = $(success).filter((e,item) => item.MaSanPham !== m);   
       });
       if(success.length>0){
         ghi(i,success);
         i++; 
 
       }
-    
       },
       dataType:'json'
     }); 
   });
-
 });
 
 function dongbang(){
@@ -282,7 +275,6 @@ function onchangevtk(id){
   $('#vtknk' +id+' option:selected').each(function(){
     var $value =$(this).data('slton');
     tong+=$value;
-    
   });
 
   if($('#slnk' +id).val()!==''){
@@ -300,21 +292,16 @@ function ghi(i,mang)
   let option2 = '';
   let option= '';
   $(mang).map((key,m)=>
-  
     {
-    
       if (key===0){
         option += '<option value="'+m.MaSanPham+'">'+m.TenSanPham+'</option>';
       }
       else{
         option2 += '<option value="'+m.MaSanPham+'">'+m.TenSanPham+'</option>';
-      }
-        
+      } 
     }
   );
   option +=option2;
-    
-
   $('#addr'+i).html(
       "<td>"+
       "<input name='checknk[]' value='"+i+"' type='checkbox' id='checknk"+i+"' disabled class='form-control input-md checknk'  />"+
@@ -368,10 +355,6 @@ function changemsnk(id)
     },
     dataType:'json'
   });
-
-
-
-
   $.ajax({
     type: "GET",
     url: "{{url('ql-hanghu-tim')}}",
@@ -389,12 +372,10 @@ function changemsnk(id)
     dataType:'json'
   });
 };
-
 function sua(mang)
 {
   let option= '';
   $(mang).map((key,m)=>
-  
           {
             option += '<option value="'+m.MaSanPham+'">'+m.TenSanPham+'</option>';             
           }
@@ -404,13 +385,10 @@ function sua(mang)
     option1 = '<option value="'+ $('#'+this.id).val()+'">'+ $('#'+this.id+' option:selected').text()+'</option>'+option1;
     $('#'+this.id).html(option1);       
   });      
-
-
 }
 
 function xoacot(r)
 {
-
 	$("#addr"+r).html('');
   $.ajax({
     type: "GET",
@@ -430,8 +408,7 @@ function xoacot(r)
 };
 
 function inphieu(bool)
-{  
-
+{
   let r= $('#TenNhanVien').val();
   let string="";
   $('.checknk').each(function(){
@@ -449,38 +426,30 @@ function inphieu(bool)
     '</td>'+
     '</tr>'
   });
-
-  
-
   iddein = $('#MaHoaDonXuat').val();
+  var mywindow = window.open('', 'PRINT', 'height=1200,width=600');
   mywindow.document.write('<html><head><title></title>');
+  mywindow.document.write('<style>table {width: 70%;border-collapse: collapse;}table, td, th {text-align: center;padding: 4px;border: 1px solid black;}</style>');
   mywindow.document.write('</head><body >');
-  mywindow.document.write('<h1>Công Ty Trách Nhiệm Hữu Hạn LTTS</h1>');
+  mywindow.document.write('<h1><center>Công Ty Trách Nhiệm Hữu Hạn LTTS</center></h1>');
   mywindow.document.write('<h1><center>Phiếu Nhập Kho Hỏng</center></h1>');
   mywindow.document.write('<h3>Số phiếu nhập kho: '+iddein+'</h3>');
   mywindow.document.write('<h3>Nhân viên xuất kho: '+r+'</h3>');
   mywindow.document.write('<h3>Ngày xuất kho: '+new Date().toLocaleString()+'</h3>');
   mywindow.document.write(
-    '<table style="margin-left:75px;" border="1" width="450"> '+
+    '<center><table> '+
     '<tr>'+
     '<th width="33%" class="text-primary">Tên Sản phẩm </th><th width="33%"> Số lượng </th><th width="33%">Vị trí kho</th>'+
     '</tr>'+  
     string+
     '<table>');
-  mywindow.document.write('<br><br><br><div style="margin-left:75px;"> &nbsp  &nbsp  &nbsp  &nbsp  &nbsp Nhân viên ký tên  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Người nhận ký tên</div>'); 
-  mywindow.document.write('</body></html>');
-
+  mywindow.document.write('<br><br><br><div>Nhân viên ký tên  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Người nhận ký tên</div>'); 
+  mywindow.document.write('</center></body></html>');
   mywindow.document.close(); 
   mywindow.focus(); 
-  //mywindow.print();
-  //mywindow.close();
-  
-  $('#MaHoaDonXuat').val(maxk);
-  return bool;
-}
-function hienthiphieuin()
-{
   mywindow.print();
+  mywindow.close();
+  return bool;
 }
 
 </script>

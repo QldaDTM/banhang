@@ -318,7 +318,6 @@ function inphieu(bool)
     '<table>');
   mywindow.document.write('<br><br><br><div>Nhân viên ký tên  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Người nhận ký tên</div>'); 
   mywindow.document.write('</center></body></html>');
-
   mywindow.document.close(); 
   mywindow.focus(); 
   mywindow.print();
