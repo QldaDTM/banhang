@@ -76,17 +76,17 @@
 </div>
 </div>
 <script>
-  $(document).ready(function(){
-    $.ajaxSetup({
+  $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     });
+  $(document).ready(function(){
     let i =1;
     let sp;
     let mang= [];
     $.ajax({
-    type: "get",
+    type: "POST",
     url: "{{ url('search-kho') }}",
     data: {getidnk:'getidnk'},
     success: function(success){
@@ -96,7 +96,7 @@
     $( "#mspnk0" ).ready( function(){
       let maspdau= $( "#mspnk0" ).val();
       $.ajax({
-        type: "get",
+        type: "POST",
         url: "{{ url('search-kho') }}",
         data: {selectkhonk:maspdau},
         success: function(success){
@@ -107,7 +107,7 @@
 
     $("#add_row").click(function(){
       $.ajax({
-        type: "get",
+        type: "POST",
         url: "{{ url('search-kho') }}",
         data: {gspnk:'gspnk'},
         success: function(success){    
@@ -214,7 +214,7 @@ function ghi(i,mang){
 
   let maspdau= $( "#mspnk"+i ).val();
   $.ajax({
-    type: "get",
+    type: "POST",
     url: "{{ url('search-kho') }}",
     data: {selectkhonk:maspdau},
     success: function(success){
@@ -225,7 +225,7 @@ function ghi(i,mang){
 function changemsnk(id) {
   let maspdau= $( "#mspnk"+id ).val();
   $.ajax({
-    type: "get",
+    type: "POST",
     url: "{{ url('search-kho') }}",
     data: {selectkhonk:maspdau},
     success: function(success){
@@ -233,7 +233,7 @@ function changemsnk(id) {
     }
   });
   $.ajax({
-    type: "get",
+    type: "POST",
     url: "{{ url('search-kho') }}",
     data: {gspnk:'gspnk'},
     success: function(success){   
@@ -265,7 +265,7 @@ function sua(mang){
 function xoacot(r){
 	$("#addr"+r).html('');
   $.ajax({
-    type: "get",
+    type: "POST",
     url: "{{ url('search-kho') }}",
     data: {gspnk:'gspnk'},
     success: function(success){    

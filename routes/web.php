@@ -51,4 +51,9 @@ Route::any('search-kho', 'nhapKhoController@searchKho');
 
 Route::any('xuat-kho', 'xuatKhoController@XuatKho');
 
+Route::get('thong-ke-NX', 'thongKeController@NhapXuat');
+Route::post('thong-ke-NX-ajax', 'thongKeController@AjaxRequest');
+Route::get('thong-ke-TT', 'thongKeTTController@ThongKeTT');
+Route::post('thong-ke-TT-ajax', 'thongKeTTController@AjaxRequest');
+
 Auth::routes();

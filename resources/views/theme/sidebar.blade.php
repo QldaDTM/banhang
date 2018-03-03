@@ -85,12 +85,12 @@
 
                     <li>
 
-                        <a href="{{ url('thongkexuatkho') }}">Thống kê Xuất kho</a>
+                        <a href="{{ url('thong-ke-NX') }}">Thống kê Xuất/Nhập kho</a>
 
                     </li>
                     <li>
 
-                        <a href="{{ url('thongkenhapkho') }}">Thống kê nhập kho</a>
+                        <a href="{{ url('thong-ke-TT') }}">Thống kê tổn thất</a>
 
                     </li>
 
