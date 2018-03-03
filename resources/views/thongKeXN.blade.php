@@ -5,12 +5,14 @@
     <h2>Thống kê nhập/xuất hàng</h2>
   </div>
 </div>
-<div class="form-group">
+<div class="row form-group">
+  <div class="col-sm-3">
       <label for="loaithongke" class="control-label">Thống kê...</label>   
-      <select name="loaithongke" id="loaithongke" class="form-control col-sm-2">
+      <select name="loaithongke" id="loaithongke" class="form-control">
         <option value="xuatkho">Xuất kho</option>
         <option value="nhapkho">Nhập kho</option>
       </select> 
+  </div>
 </div>
 <div class="row">
     <div class="col-sm-2">
@@ -22,26 +24,33 @@
       </select>
     </div>
     <div class="col-sm-1">
-      <label for="type" class="control-label">Kiểu lọc...</label>   
-      <button type="button" class="btn btn-outline-secondary" id="type" name="type" value="asc">
-        <i class="fa fa-arrow-up" aria-hidden="true" style="color:blue;" value="asc" id="mui" name="mui"></i>
+      <label for="type" class="control-label">Hiển thị...</label>   
+      <button type="button" class="btn btn-outline-secondary form-control" id="type" name="type" value="asc">
+        <i class="fa fa-arrow-up" aria-hidden="true" style="color:blue;"></i>
       </button>
     </div>
     <div class="col-sm-3">
       <label for="searchp" class="control-label">Tìm kiếm...</label>  
       <input id="searchp" type="text" name="searchp" class="form-control" placeholder="Nhập từ khoá..." />
     </div>
-    <div class="col-sm-2" ></div>
+   
     <div class="col-sm-2">
       <label for="datestart" class="control-label">Từ ngày...</label>   
       <input id="datestart" type="date" name="datestart" class="form-control"/>
     </div>
-     <div class="col-sm-2">
+    <div class="col-sm-2">
       <label for="dateend" class="control-label">Đến ngày...</label>   
       <input id="dateend" type="date" name="dateend" class="form-control"/>
     </div>
+    <div class="col-sm-1" >
+      <label for="in" class="control-label">Print...</label>   
+      <button type="button" class="btn btn-success" onclick="inbang()" id="in" name="in">
+        <i class="fa fa-print" aria-hidden="true"></i> In thống kê
+      </button>
+    </div>
 </div>
 </br>
+
 <table class="table table-striped table-success table-hover table-bordered" id="dtalble">
 <?php
  echo $details;
@@ -49,6 +58,26 @@
 </table>
 
 <script>
+function inbang(){
+  var divElements = document.getElementById("dtalble");
+  var mywindow = window.open('', 'PRINT', 'height=1200,width=600');
+  mywindow.document.write('<html><head><title></title>');
+  mywindow.document.write('<style>table {width: 90%;border-collapse: collapse;}table, td, th {text-align: center;padding: 2px;border: 1px solid black;}</style>');
+  mywindow.document.write('</head><body >');
+  mywindow.document.write('<h1><center>Công Ty Trách Nhiệm Hữu Hạn LTTS</center></h1>');
+  if ($("#loaithongke").val() == 'xuatkho')
+    mywindow.document.write('<h1><center>Phiếu thống kê xuất kho</center></h1><center>');
+  else
+    mywindow.document.write('<h1><center>Phiếu thống kê nhập kho</center></h1><center>');
+  mywindow.document.write(divElements.outerHTML);
+  mywindow.document.write('<center><br><br><br><div>Nhân viên ký tên</div>'); 
+  mywindow.document.write('</center></body></html>');
+  mywindow.document.close(); 
+  mywindow.focus(); 
+  mywindow.print();
+  mywindow.close();
+}
+
 $.ajaxSetup({
   headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

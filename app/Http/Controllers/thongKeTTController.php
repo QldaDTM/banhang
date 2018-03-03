@@ -25,7 +25,7 @@ class thongKeTTController extends Controller
     {
       switch($Request->name)
       {
-      case 'mp'		: 
+      case 'mp'	:
         echo $t->getDetails('manhap','asc',$Request->keys,$Request->dates,$Request->datee,$Request->tinhtrang);
         break;
       case 'nx'	: 
@@ -56,7 +56,5 @@ class thongKeTTController extends Controller
       }
     }
   }
-
-
 }
 ?>

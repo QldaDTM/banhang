@@ -44,8 +44,8 @@ class thongKeTT
       $string .='</tr> </tbody>';
     }
     $string.= '<tfoot><tr class="text-right">
-              <td colspan="6"><b>Tổng số lượng: '.$sl.'</td>';
-    $string.= '<td colspan="2"><b>Tổng tiền: '.$tongtien.' VNĐ</b>';
+              <td colspan="7"><b>Tổng số lượng: '.$sl.'</td>';
+    $string.= '<td colspan="2"><b>Tổng tiền: '.$tongtien.'</b>';
     $string.= '</td></tr></tfoot>';
     return $string;
   }
@@ -54,7 +54,7 @@ class thongKeTT
   {
 	  if ($datee != "")
 	    $datee.= " 23:59:59";
-	  if ($key == "")
+	  if ($key == "" || $key==null)
 	  {
 	    if($dates == "" && $datee != "")
 	    $sql = "select nkh.MaNhapKhoHong as manhap, nkh.NgayNhapKho as ngaynhap, sp.TenSanPham as tensp, ctkh.SoLuong as sl, ctxk.DonGia as dg, nkh.MaPhieu as maphieu, kh.TenKhu as vitri, tv.TenThanhVien from nhapkhohong nkh, khohong kh, sanpham sp, chitietkhohong ctkh, chitietxuatkho ctxk, thanhvien tv where nkh.MaNhapKhoHong = ctkh.MaNhapKhoHong and nkh.MaPhieu = ctxk.MaPhieuXuatKho and ctkh.MaSanPham = ctxk.MaSanPham and ctkh.MaKhuHong = kh.MaKhu and tv.MaThanhVien = nkh.MaNhanVien and sp.MaSanPham = ctkh.MaSanPham and ctkh.TinhTrang = '".$tt."' and nkh.NgayNhapKho <= '".$datee."' order by ".$name." ".$type;
@@ -63,9 +63,8 @@ class thongKeTT
 	      elseif($datee != "" && $dates != "") 
 	         $sql = "select nkh.MaNhapKhoHong as manhap, nkh.NgayNhapKho as ngaynhap, sp.TenSanPham as tensp, ctkh.SoLuong as sl, ctxk.DonGia as dg, nkh.MaPhieu as maphieu, kh.TenKhu as vitri, tv.TenThanhVien from nhapkhohong nkh, khohong kh, sanpham sp, chitietkhohong ctkh, chitietxuatkho ctxk, thanhvien tv where nkh.MaNhapKhoHong = ctkh.MaNhapKhoHong and nkh.MaPhieu = ctxk.MaPhieuXuatKho and ctkh.MaSanPham = ctxk.MaSanPham and ctkh.MaKhuHong = kh.MaKhu and tv.MaThanhVien = nkh.MaNhanVien and sp.MaSanPham = ctkh.MaSanPham and ctkh.TinhTrang = '".$tt."' and nkh.NgayNhapKho <= '".$datee."' and nkh.NgayNhapKho >= '".$dates."' order by ".$name." ".$type;
 	        else
-	         $sql = "select nkh.MaNhapKhoHong as manhap, nkh.NgayNhapKho as ngaynhap, sp.TenSanPham as tensp, ctkh.SoLuong as sl, ctxk.DonGia as dg, nkh.MaPhieu as maphieu, kh.TenKhu as vitri, tv.TenThanhVien from nhapkhohong nkh, khohong kh, sanpham sp, chitietkhohong ctkh, chitietxuatkho ctxk, thanhvien tv where nkh.MaNhapKhoHong = ctkh.MaNhapKhoHong and nkh.MaPhieu = ctxk.MaPhieuXuatKho and ctkh.MaSanPham = ctxk.MaSanPham and ctkh.MaKhuHong = kh.MaKhu and tv.MaThanhVien = nkh.MaNhanVien and sp.MaSanPham = ctkh.MaSanPham and ctkh.TinhTrang = '".$tt."'"; 
+	         $sql = "select nkh.MaNhapKhoHong as manhap, nkh.NgayNhapKho as ngaynhap, sp.TenSanPham as tensp, ctkh.SoLuong as sl, ctxk.DonGia as dg, nkh.MaPhieu as maphieu, kh.TenKhu as vitri, tv.TenThanhVien from nhapkhohong nkh, khohong kh, sanpham sp, chitietkhohong ctkh, chitietxuatkho ctxk, thanhvien tv where nkh.MaNhapKhoHong = ctkh.MaNhapKhoHong and nkh.MaPhieu = ctxk.MaPhieuXuatKho and ctkh.MaSanPham = ctxk.MaSanPham and ctkh.MaKhuHong = kh.MaKhu and tv.MaThanhVien = nkh.MaNhanVien and sp.MaSanPham = ctkh.MaSanPham and ctkh.TinhTrang = '".$tt."'order by ".$name." ".$type; 
 	  }
-	    
 	  else
 	  {
 	    if($dates == "" && $datee != "")
