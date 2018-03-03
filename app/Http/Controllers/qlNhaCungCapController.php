@@ -12,10 +12,6 @@ class qlNhaCungCapController extends Controller
         $this->middleware('auth');
   }
 
-  public function __construct()
-  {
-        $this->middleware('auth');
-  }
   public function qlNhaCungCap() {
     $nhacungcap = qlNhaCungCap::all();
     return view('qlNhaCungCap',["nhacungcap"=>$nhacungcap]);

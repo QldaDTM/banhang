@@ -146,7 +146,7 @@
             <td>{{ $ncc->Email }}</td>
             <td>{{ $ncc->MaSoThue }} </td>
             <td>
-              <button data-toggle="modal" onclick="suancc( '{{$ncc->MaNhaCungCap}}' ,' {{$ncc->TenNhaCungCap}} ',' {{ $ncc->DiaChi }} ', '{{ $ncc->SDT }}',' {{$ncc->Email}} ',' {{$ncc->MaSoThue}} ')" value="{{$ncc->MaNhaCungCap}}" data-target="#suancc" class="btn btn-primary" type="button" >
+              <button data-toggle="modal" onclick="suancc( '{{$ncc->MaNhaCungCap}}' ,'{{$ncc->TenNhaCungCap}}','{{ $ncc->DiaChi }}', '{{ $ncc->SDT }}','{{$ncc->Email}}','{{$ncc->MaSoThue}}')" value="{{$ncc->MaNhaCungCap}}" data-target="#suancc" class="btn btn-primary" type="button" >
                 Sửa
               </button>
               <button data-toggle="modal" onclick="xoancc('{{$ncc->MaNhaCungCap}}')" data-target="#xoancc" class="btn btn-danger" type="button" >

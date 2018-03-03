@@ -30,7 +30,7 @@ class nhapKhoController extends Controller
     $nk = new nhapKho();
     $nk->TaoPhieuNhapKho($request);
        
-    //return redirect()->back();
+    return redirect()->back();
     //echo "<script>console.log(''".$request."'')</script>";
     //return redirect()->back();
   }
