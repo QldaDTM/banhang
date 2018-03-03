@@ -164,7 +164,6 @@
 </script>
 
 <script>
-var mywindow = window.open('', 'PRINT', 'height=1200,width=600');
 var i =0;
 var maxk='';
 $(document).ready(function(){
@@ -431,7 +430,7 @@ function xoacot(r)
 
 function inphieu(bool)
 {  
-
+  var mywindow = window.open('', 'PRINT', 'height=1200,width=600');
   let r= $('#TenNhanVien').val();
   let string="";
   $('.checknk').each(function(){
@@ -472,15 +471,11 @@ function inphieu(bool)
 
   mywindow.document.close(); 
   mywindow.focus(); 
-  //mywindow.print();
+  mywindow.print();
   //mywindow.close();
   
   $('#MaHoaDonXuat').val(maxk);
   return bool;
-}
-function hienthiphieuin()
-{
-  mywindow.print();
 }
 
 </script>

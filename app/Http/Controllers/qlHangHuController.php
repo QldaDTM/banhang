@@ -11,7 +11,7 @@ class qlHangHuController extends Controller
 {
   public function __construct()
   {
-         $this->middleware('auth');
+    $this->middleware('auth');
   }
 
   public function qlHangHu() {
@@ -29,11 +29,12 @@ class qlHangHuController extends Controller
     'MaSanPham',$request->suamasp)->where('MaNhapKhoHong', $request->suamancc)
     ->update(
       ['TinhTrang' => $request->suaemailncc]);
-  return redirect()->back();
+    return redirect()->back();
   } 
   public function delete(Request $request){
+    $qlHangHu = new qlHangHu();
     $mang=explode(';',$request->xoancc);
-    $qlHangHu = qlHangHu::where('MaSanPham',$mang[1])->where('MaNhapKhoHong',$mang[0])->delete();  
+    $qlHangHu->xoaKhoHong($mang[0]);
     return redirect()->back();
   }
   public function search(Request $Request){

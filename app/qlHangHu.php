@@ -55,6 +55,10 @@ class qlHangHu extends Model
       $sql= DB::select("select * from khohong where MaSanPham='$masanpham' ");
       return $sql;
   }
+   function xoaKhoHong($manhapkhohong){
+      $sql= DB::delete("delete from nhapkhohong where MaNhapKhoHong ='$manhapkhohong'");
+      return $sql;
+  }
   function laysoluong($mang){
       $sql ="select MaKhu,(SoLuongChuaToiDa - SoLuongDangChua)as slcon from khohong where ";
       foreach($mang as $id){
