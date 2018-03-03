@@ -11,7 +11,7 @@
   <div class="modal fade" id="themksp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-      <form method="post" action="{{url('/khovatlieuchinh-them') }}">
+      <form method="post" action="{{url('/khovatlieuhong-them') }}">
         {{ csrf_field() }}
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Thêm kho vật liệu</h5>
@@ -51,7 +51,7 @@
   <div class="modal fade" id="suaksp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-          <form method="post" action="{{url('/khovatlieuchinh-sua') }}"  onsubmit="submitsuaksp()">
+          <form method="post" action="{{url('/khovatlieuhong-sua') }}"  onsubmit="myFunction()">
             {{ csrf_field() }}
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Sửa kho vật liệu</h5>
@@ -101,7 +101,7 @@
           </button>
         </div>
         <div class="modal-footer">
-          <form method="post" action="{{url('/khovatlieuchinh-xoa') }}">
+          <form method="post" action="{{url('/khovatlieuhong-xoa') }}">
             {{ csrf_field() }}
             <input type='hidden' name='qlkho' value='ksp'  />
             <button type="submit" id="btncoxoaksp" class="btn btn-success" name="xoaksp" value="">Có</button>
@@ -131,23 +131,23 @@
         </tr>
       </thead>
       <tbody>
-        @foreach($khoVatLieuChinh as $kvlc)       
+        @foreach($khoVatLieuHong as $kvlh)       
           <tr class="text-center">   
-          <th scope="row">{{$kvlc->MaKhu}}</th>
-          <td> {{$kvlc->TenKhu}}</td>
-          <td> {{$kvlc->sanpham->TenSanPham}} </td>
-          <td> {{$kvlc->SoLuongChuaToiDa}}</td>
-          <td> {{$kvlc->SoLuongDangChua}}</td>
+          <th scope="row">{{$kvlh->MaKhu}}</th>
+          <td> {{$kvlh->TenKhu}}</td>
+          <td> {{$kvlh->sanpham->TenSanPham}} </td>
+          <td> {{$kvlh->SoLuongChuaToiDa}}</td>
+          <td> {{$kvlh->SoLuongDangChua}}</td>
           <td>
             <button 
               data-toggle="modal"
-              onclick = "suaksp('{{$kvlc->MaKhu}}','{{$kvlc->TenKhu}}','{{$kvlc->MaSanPham}}','{{$kvlc->SoLuongChuaToiDa}}' ,'{{$kvlc->SoLuongDangChua}}')" value="{{$kvlc->MaKhu}}" 
+              onclick = "suaksp('{{$kvlh->MaKhu}}','{{$kvlh->TenKhu}}','{{$kvlh->MaSanPham}}','{{$kvlh->SoLuongChuaToiDa}}' ,'{{$kvlh->SoLuongDangChua}}')" value="{{$kvlh->MaKhu}}" 
               data-target="#suaksp" 
               class="btn btn-primary" 
               type="button" >
               Sửa
             </button>
-            <button data-toggle="modal" onclick="xoaksp('{{$kvlc->MaKhu}}')" data-target="#xoaksp" class="btn btn-danger" type="button" >Xoá</button></td>
+            <button data-toggle="modal" onclick="xoaksp('{{$kvlh->MaKhu}}')" data-target="#xoaksp" class="btn btn-danger" type="button" >Xoá</button></td>
           </tr>
         @endforeach
         

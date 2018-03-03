@@ -9,8 +9,9 @@
 <div class="col-md-12 column">
 <div id='in' style='display:none'></div>			
 	<form method="post" onsubmit="return onsubmitnhapkho()" action="{{ url('/nhap-kho-run')}}">
-  {{ csrf_field() }}
+  
 		<table class="table table-striped table-success table-hover table-bordered text-center" id="tab_logic">
+      {{ csrf_field() }}
 			<thead class="thead-inverse">
 				<col width="50">
  			 	<col width="250">
@@ -191,7 +192,7 @@ function ghi(i,mang){
       "<input name='slnk"+i+"' type='number' id='slnk"+i+"'  required onchange='onchangevtk("+i+")' placeholder='Số lượng' class='form-control input-md slnk'  />"+
       " </td>"+
       "<td>"+
-        "<input type='number' name='dgnk0' min=0 id='dgnk0'  required placeholder='Đơn giá' class='form-control'/>"+
+         "<input type='number' name='dgnk"+i+"' min=0 id='dgnk"+i+"'  required placeholder='Đơn giá' class='form-control'/>"+
 			"</td>"+
       "<td>"+
       "<select multiple onchange='onchangevtk("+i+")'    required name='vtknk"+i+"[]' id='vtknk"+i+"' class='form-control input-md vtknk'>"+

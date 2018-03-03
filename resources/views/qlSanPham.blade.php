@@ -181,7 +181,7 @@ $( document ).ready(function() {
     var r= $("#searchcsp").val();
     $.ajax({
       type: "post",
-      url: "{{ url('search-sanpham') }}",
+      url: "{{ url('ql-sanpham-search') }}",
       data: {searchcsp: r},
       success: function(success){
         $('#csptbody').html(success);

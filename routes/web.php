@@ -23,13 +23,27 @@ Route::get('ql-sanpham', 'qlSanPhamController@qlSanPham');
 Route::post('ql-sanpham-them', 'qlSanPhamController@insert');
 Route::post('ql-sanpham-sua', 'qlSanPhamController@update');
 Route::post('ql-sanpham-xoa', 'qlSanPhamController@delete');
+Route::post('ql-sanpham-search', 'qlSanPhamController@search');
 
 Route::get('khovatlieuchinh', 'khoVatLieuChinhController@khoVatLieuChinh');
 Route::post('khovatlieuchinh-them', 'khoVatLieuChinhController@insert');
 Route::post('khovatlieuchinh-sua', 'khoVatLieuChinhController@update');
 Route::post('khovatlieuchinh-xoa', 'khoVatLieuChinhController@delete');
 
-Route::post('search-sanpham', 'searchController@searchSanPham');
+Route::get('khovatlieuhong', 'khoVatLieuHongController@khoVatLieuHong');
+Route::post('khovatlieuhong-them', 'khoVatLieuHongController@insert');
+Route::post('khovatlieuhong-sua', 'khoVatLieuHongController@update');
+Route::post('khovatlieuhong-xoa', 'khoVatLieuHongController@delete');
+
+Route::get('kiemtratonkho', 'kiemTraTonKhoController@kiemTraTonKho');
+Route::get('kiemtratonkho-loc', 'kiemTraTonKhoController@filter');
+Route::post('kiemtratonkho-inthongke', 'kiemTraTonKhoController@printer');
+
+Route::get('ql-hanghu', 'qlHangHuController@qlHangHu');
+Route::post('ql-hanghu-them', 'qlHangHuController@insert');
+Route::post('ql-hanghu-sua', 'qlHangHuController@update');
+Route::post('ql-hanghu-xoa', 'qlHangHuController@delete');
+Route::get('ql-hanghu-tim', 'qlHangHuController@search');
 
 Route::any('nhap-kho', 'nhapKhoController@NhapKho');
 Route::post('nhap-kho-run', 'nhapKhoController@Nhap');

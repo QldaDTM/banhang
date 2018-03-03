@@ -2,9 +2,10 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class nhapKho
+class nhapKho extends Model
 {
   public function getselectkho($masp){
     $sql= 'select * from kho where MaSanPham = $masp';
@@ -62,7 +63,7 @@ class nhapKho
       $sql = "insert into chitietnhapkho values";
       foreach($mang->checknk as $id){
         $r = substr($r,0,strlen($r)-1);
-        $sql.="( '".$idhd ." ','".$mang['mspnk'.$id] ." ', '".$r."','".$mang['slnk'.$id]."','".$mang['dgnk'.$id]."' ),"; 
+        $sql.="( '".$idhd ."','".$mang['mspnk'.$id] ."','".$r."','".$mang['slnk'.$id]."','".$mang['dgnk'.$id]."'),";
       }
       $sql = substr($sql,0,strlen($sql)-1);
       if (DB::update($sql) == 0) {
