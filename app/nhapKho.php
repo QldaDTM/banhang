@@ -38,7 +38,7 @@ class nhapKho extends Model
   function TaoPhieuNhapKho($mang){
     $bool= true;
     $idhd = $this->getIdToInsert();
-    $idtv= "TV1";
+    $idtv = $mang->MaNhanVien;
     
     foreach($mang->checknk as $id){
       $tongsp = $mang['slnk'.$id];

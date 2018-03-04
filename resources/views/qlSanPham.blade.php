@@ -171,12 +171,12 @@
   </div>
 </div>
 <script>
-$( document ).ready(function() {
-  $.ajaxSetup({
+$.ajaxSetup({
   headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
   }
   });
+$( document ).ready(function() {
   $("#searchcsp").keyup(function() {
     var r= $("#searchcsp").val();
     $.ajax({

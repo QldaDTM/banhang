@@ -97,7 +97,7 @@ class qlHangHu extends Model
 
       $bool= true;
       $idhd=$this->getidtoinsert();
-      $idtv= 'TV1';
+      $idtv= $mang->MaNhanVien;
       $maxk= $mang->nhapkhosubmit;
       foreach($mang->checknk as $id){
         
